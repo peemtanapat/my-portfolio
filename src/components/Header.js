@@ -35,11 +35,13 @@ const socials = [
 const menuButtons = [
   {
     label: 'Project',
-    anchor: 'projects'
+    anchor: 'projects',
+    href: '#projects'
   },
   {
     label: 'Contact Me',
-    anchor: 'contactme'
+    anchor: 'contactme',
+    href: '#contactme'
   }
 ]
 
@@ -88,9 +90,9 @@ const Header = () => {
             <HStack spacing={8}>
               {/* Add links to Projects and Contact me section */}
               {menuButtons.map(item =>
-                <Button key={item.anchor} color="white" _hover={{ background: "transparent" }} variant="ghost" onClick={handleClick(item.anchor)}>
+                <a href={item.href} onClick={handleClick(item.anchor)}> 
                   {item.label}
-                </Button>
+                </a> 
               )}
             </HStack>
           </nav>
