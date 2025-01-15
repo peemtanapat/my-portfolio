@@ -16,6 +16,7 @@ const useSubmit = () => {
     try {
       await wait(2000);
       if (random < 0.5) {
+        console.log({random1:random});
         throw new Error("Something went wrong");
       }
       setResponse({
@@ -23,6 +24,7 @@ const useSubmit = () => {
         message: `Thanks for your submission ${data.firstName}, we will get back to you shortly!`,
       })
     } catch (error) {
+      console.log({ random2: random });
       setResponse({
         type: 'error',
         message: 'Something went wrong, please try again later!',

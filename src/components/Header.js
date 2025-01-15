@@ -65,6 +65,7 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
+      zIndex={10}
       backgroundColor="#18181b"
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
@@ -77,7 +78,7 @@ const Header = () => {
           <nav>
             <HStack spacing={4}>
               {socials.map(item =>
-                <a key={item.url} href={item.url}>
+                <a key={item.url} href={item.url} target="_blank">
                   <FontAwesomeIcon src={item.url} icon={item.icon} size="2x" />
                 </a>)
               }
@@ -87,7 +88,9 @@ const Header = () => {
             <HStack spacing={8}>
               {/* Add links to Projects and Contact me section */}
               {menuButtons.map(item =>
-                <Button key={item.anchor} onClick={handleClick(item.anchor)}>{item.label}</Button>
+                <Button key={item.anchor} color="white" _hover={{ background: "transparent" }} variant="ghost" onClick={handleClick(item.anchor)}>
+                  {item.label}
+                </Button>
               )}
             </HStack>
           </nav>

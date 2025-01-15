@@ -29,11 +29,7 @@ const LandingSection = () => {
       comment: "",
     },
     onSubmit: async (values) => {
-      console.log(`submitting...`);
-      console.log({values});
       await submit("", values);
-      console.log({ response })
-      onOpen(response.type, response.message)
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -50,12 +46,16 @@ const LandingSection = () => {
     }),
   });
 
-  formik.getFieldProps()
+  useEffect(() => {
+    if (response && response.type && response.message) {
+      onOpen(response.type, response.message)
+    }
+  }, [response])
 
   return (
     <FullScreenSection
       isDarkBackground
-      backgroundColor="#929096"
+      backgroundColor="#2A4365"
       py={16}
       spacing={8}
     >
@@ -105,7 +105,7 @@ const LandingSection = () => {
                 />
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
-              <Button type="submit" colorScheme="purple" width="full" disabled={isLoading}>
+              <Button type="submit" width="full" disabled={isLoading}>
                 Submit
               </Button>
             </VStack>
